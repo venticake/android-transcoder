@@ -1,40 +1,16 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.novoda:bintray-release:0.2.4'
-    }
-}
-
 apply plugin: 'com.android.library'
-apply plugin: 'bintray-release'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 25
+        targetSdkVersion rootProject.ext.targetSdkVersion
     }
 
-    buildTypes {
-        release {
-            zipAlignEnabled true
-            minifyEnabled false
-            shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
-}
-
-publish {
-    groupId = 'net.ypresto.androidtranscoder'
-    artifactId = 'android-transcoder'
-    version = '0.2.0'
-    licences = ['Apache-2.0']
-    website = 'https://github.com/ypresto/android-transcoder'
-    autoPublish = false
-    dryRun = false
 }
