@@ -13,4 +13,32 @@ android {
         sourceCompatibility rootProject.ext.sourceCompatibility
         targetCompatibility rootProject.ext.targetCompatibility
     }
+
+    flavorDimensions "sdk"
+
+    productFlavors {
+        sdk15 {
+            dimension "sdk"
+            vectorDrawables.useSupportLibrary = false
+        }
+
+        sdk21 {
+            dimension "sdk"
+            vectorDrawables.useSupportLibrary = true
+        }
+    }
+
+    buildTypes {
+        debug {
+
+        }
+
+        staging {
+
+        }
+
+        release {
+
+        }
+    }
 }
