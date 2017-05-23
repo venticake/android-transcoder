@@ -7,38 +7,12 @@ android {
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion rootProject.ext.targetSdkVersion
+        vectorDrawables.useSupportLibrary rootProject.ext.isMinSdk21
+        multiDexEnabled rootProject.ext.isMinSdk21
     }
 
     compileOptions {
         sourceCompatibility rootProject.ext.sourceCompatibility
         targetCompatibility rootProject.ext.targetCompatibility
-    }
-
-    flavorDimensions "sdk"
-
-    productFlavors {
-        sdk15 {
-            dimension "sdk"
-            vectorDrawables.useSupportLibrary = false
-        }
-
-        sdk21 {
-            dimension "sdk"
-            vectorDrawables.useSupportLibrary = true
-        }
-    }
-
-    buildTypes {
-        debug {
-
-        }
-
-        staging {
-
-        }
-
-        release {
-
-        }
     }
 }
