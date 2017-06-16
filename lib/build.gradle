@@ -5,20 +5,18 @@ group = GROUP
 version = VERSION
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 25
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        vectorDrawables.useSupportLibrary rootProject.ext.isMinSdk21
+        multiDexEnabled rootProject.ext.isMinSdk21
     }
 
-    buildTypes {
-        release {
-            zipAlignEnabled true
-            minifyEnabled false
-            shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
 }
