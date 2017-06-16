@@ -1,22 +1,16 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.novoda:bintray-release:0.2.4'
-    }
-}
-
 apply plugin: 'com.android.library'
-apply plugin: 'bintray-release'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = GROUP
+version = VERSION
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 24
+        targetSdkVersion 25
     }
 
     buildTypes {
@@ -27,14 +21,4 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
-
-publish {
-    groupId = 'net.ypresto.androidtranscoder'
-    artifactId = 'android-transcoder'
-    version = '0.2.0'
-    licences = ['Apache-2.0']
-    website = 'https://github.com/ypresto/android-transcoder'
-    autoPublish = false
-    dryRun = false
 }
