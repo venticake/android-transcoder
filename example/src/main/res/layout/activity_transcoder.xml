@@ -1,5 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools">
+  <data>
+    <variable name="inputs" type="net.ypresto.androidtranscoder.example.TranscodeInputs" />
+  </data>
+
+  <android.support.v7.widget.LinearLayoutCompat
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,32 +15,50 @@
     tools:context=".TranscoderActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/hello_world" />
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:text="@string/hello_world" />
 
     <Button
-        android:id="@+id/select_video_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Select Video File" />
+      android:id="@+id/select_video_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:onClick="@{(view) -> inputs.onSelectVideoButtonClick()}"
+      android:text="Select Video File" />
 
     <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:progress="0" />
+      android:id="@+id/progress_bar"
+      style="?android:attr/progressBarStyleHorizontal"
+      android:layout_width="match_parent"
+      android:layout_height="20dp"
+      android:paddingStart="10dp"
+      android:paddingEnd="10dp"
+      android:layout_gravity="center_horizontal"
+      android:progress="0" />
+
+    <EditText
+      android:id="@+id/bitrateInput"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:maxLines="1"
+      android:inputType="numberDecimal"
+      android:hint="input bitrate"/>
 
     <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:enabled="false"
-        android:text="cancel" />
+      android:id="@+id/cancel_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:enabled="false"
+      android:onClick="@{(view) -> inputs.onCancelTranscodeButtonClick()}"
+      android:text="cancel" />
 
-</LinearLayout>
+    <TextView
+      android:id="@+id/transcodeResult"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+  </android.support.v7.widget.LinearLayoutCompat>
+</layout>
